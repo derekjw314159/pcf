@@ -102,10 +102,9 @@ class USER {
 		$mail->Host       = "smtp.gmail.com";      
 		$mail->Port       = 465;             
 		$mail->AddAddress($email);
-		$mail->Username="derek.3.wilson@gmail.com";  
-		$mail->Password="bgycdqkdqukoawpv";           
-		$mail->SetFrom('derek.3.wilson@gmail.com','BB&O Office');
-		$mail->AddReplyTo("derek.3.wilson@gmail.com","Derek Wilson");
+		#
+		// Pull in account details for gmail outside of document root
+		include_once(__DIR__ . "/../../gmail.php");
 		$mail->Subject    = $subject;
 		$mail->MsgHTML($message);
 		$mail->Send();
