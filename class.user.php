@@ -22,17 +22,35 @@ class USER {
 		return $stmt;
 		}
 	
-	public function register($uname,$email,$upass,$code) {
+	public function register($uname,$email,$upass,$code, $county) {
 		try {							
 			$password = md5($upass);
-			$stmt = $this->conn->prepare("INSERT INTO tbl_users(userName,userEmail,userPass,tokenCode) 
-			                                             VALUES(:user_name, :user_mail, :user_pass, :active_code)");
+			$stmt = $this->conn->prepare("INSERT INTO tbl_users(userName,userEmail,userPass,tokenCode,userCounty) 
+			                                             VALUES(:user_name, :user_mail, :user_pass, :active_code, :county)");
 			$stmt->bindparam(":user_name",$uname);
 			$stmt->bindparam(":user_mail",$email);
 			$stmt->bindparam(":user_pass",$password);
 			$stmt->bindparam(":active_code",$code);
+			$stmt->bindparam(":county",$county);
 			$stmt->execute();	
-			return $stmt;
+			$res= $stmt;
+			}
+		catch(PDOException $ex) {
+			echo $ex->getMessage();
+			}
+		// Recover user ID and add to role table
+		try {							
+			$stmt = $this->conn->prepare("SELECT userID FROM tbl_users WHERE (userEmail=:user_mail)");
+			$stmt->bindparam(":user_mail",$email);
+			$stmt->execute();
+			
+			$row = $stmt->fetch(PDO::FETCH_ASSOC);
+			$stmt = $this->conn->prepare("INSERT INTO tbl_roles (roleUser, roleCounty, roleRole) 
+				VALUES (:role_user, :role_county, 'P')");
+			$stmt->bindparam(":role_user",$row['userID']);
+			$stmt->bindparam(":role_county",$county);
+			$stmt->execute();
+			return $row['userID'];
 			}
 		catch(PDOException $ex) {
 			echo $ex->getMessage();

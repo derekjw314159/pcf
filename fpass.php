@@ -15,7 +15,11 @@ if(isset($_POST['btn-submit']))
 	$stmt = $user->runQuery("SELECT userID FROM tbl_users WHERE userEmail=:email LIMIT 1");
 	$stmt->execute(array(":email"=>$email));
 	$row = $stmt->fetch(PDO::FETCH_ASSOC);	
-	if($stmt->rowCount() == 1)
+	#
+	/* Can't use rowCount logic as it is not guaranteed to be right
+	 */
+	// if($stmt->rowCount() == 1)
+	if ($row !== FALSE)
 	{
 		$id = base64_encode($row['userID']);
 		$code = md5(uniqid(rand()));
@@ -26,15 +30,15 @@ if(isset($_POST['btn-submit']))
 		$message= "
 				   Hello , $email
 				   <br /><br />
-				   We got requested to reset your password, if you do this then just click the following link to reset your password, if not just ignore                   this email,
+				   We have received a request to reset your password, if you do this then just click the following link to reset your password, if not just ignore this email,
 				   <br /><br />
 				   Click Following Link To Reset Your Password 
 				   <br /><br />
-				   <a href='http://localhost/x/resetpass.php?id=$id&code=$code'>click here to reset your password</a>
+				   <a href='http://localhost/pcf/resetpass.php?id=$id&code=$code'>click here to reset your password</a>
 				   <br /><br />
 				   thank you :)
 				   ";
-		$subject = "Password Reset";
+		$subject = "Parental Consent System: Password Reset";
 		
 		$user->send_mail($email,$message,$subject);
 		

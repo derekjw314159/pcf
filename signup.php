@@ -24,6 +24,7 @@ if(isset($_POST['btn-signup']))
 	$email = trim($_POST['txtemail']);
 	$upass = trim($_POST['txtpass']);
 	$code = md5(uniqid(rand()));
+	$county = 1; # Default to BB&O
 	
 	$stmt = $reg_user->runQuery("SELECT * FROM tbl_users WHERE userEmail=:email_id");
 	$stmt->execute(array(":email_id"=>$email));
@@ -31,6 +32,7 @@ if(isset($_POST['btn-signup']))
 
 	#
 	/* Have to use different logic to rowCount
+	 * because it gives unreliable results
 	 */
 	//if($stmt->rowCount() > 0)
 	if ($row !== FALSE)
@@ -44,9 +46,8 @@ if(isset($_POST['btn-signup']))
 	}
 	else
 	{
-		if($reg_user->register($uname,$email,$upass,$code))
+		if($id= $reg_user->register($uname,$email,$upass,$code,$county))
 		{			
-			$id = $reg_user->lasdID();		
 			$key = base64_encode($id);
 			$id = $key;
 			
