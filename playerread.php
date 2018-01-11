@@ -1,8 +1,9 @@
 <?php
 
-require 'lib.php';
+//require 'dbconfig.php';
+require_once '/pcf/class.player.php';
 
-$object = new CRUD();
+$object = new PLAYER();
 
 // Design initial table header
 $data = '<table class="table table-bordered table-striped">
@@ -16,21 +17,21 @@ $data = '<table class="table table-bordered table-striped">
 						</tr>';
 
 
-$users = $object->Read();
-
+$users = $object->Read(); 
+// var_dump($users);
 if (count($users) > 0) {
     $number = 1;
     foreach ($users as $user) {
         $data .= '<tr>
 				<td>' . $number . '</td>
-				<td>' . $user['first_name'] . '</td>
-				<td>' . $user['last_name'] . '</td>
-				<td>' . $user['email'] . '</td>
+				<td>' . $user['playerFirstName'] . '</td>
+				<td>' . $user['playerLastName'] . '</td>
+				<td>' . $user['playerEmail1'] . '</td>
 				<td>
-					<button onclick="GetUserDetails(' . $user['id'] . ')" class="btn btn-warning">Update</button>
+					<button onclick="GetUserDetails(' . $user['playerID'] . ')" class="btn btn-warning">Update</button>
 				</td>
 				<td>
-					<button onclick="DeleteUser(' . $user['id'] . ')" class="btn btn-danger">Delete</button>
+					<button onclick="DeleteUser(' . $user['playerID'] . ')" class="btn btn-danger">Delete</button>
 				</td>
     		</tr>';
         $number++;

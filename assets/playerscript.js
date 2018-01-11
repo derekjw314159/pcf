@@ -29,8 +29,7 @@ function addRecord() {
         }, function (data, status) {
             // close the popup
             $("#add_new_record_modal").modal("hide");
-
-            // read records again
+            // read records again/
             readRecords();
 
             // clear fields from the popup
@@ -43,7 +42,7 @@ function addRecord() {
 
 // READ records
 function readRecords() {
-    $.get("ajax/read.php", {}, function (data, status) {
+    $.get("/pcf/ajax/playerread.php", {}, function (data, status) {
         $(".records_content").html(data);
     });
 }

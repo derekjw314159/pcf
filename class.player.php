@@ -1,6 +1,6 @@
 <?php
 
-require_once 'dbconfig.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/pcf/dbconfig.php';
 
 class PLAYER
 {
@@ -13,7 +13,7 @@ class PLAYER
 		}
 
     public function __destruct() {
-        $this->conn = null;
+        //$this->conn = null;
 		}
 
     /*
@@ -32,7 +32,7 @@ class PLAYER
 			$stmt->bindParam(":last_name", $last_name, PDO::PARAM_STR);
 			$stmt->bindParam(":email", $email, PDO::PARAM_STR);
 			$stmt->bindParam(":dob", $dob, PDO::PARAM_STR);
-			$stmt->bindParam(":countu", $county, PDO::PARAM_STR);
+			$stmt->bindParam(":county", $county, PDO::PARAM_STR);
 			$stmt->execute();
 			return $stmt;
 			}

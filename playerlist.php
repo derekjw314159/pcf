@@ -6,6 +6,21 @@
 
     <!-- Bootstrap CSS File  -->
     <link rel="stylesheet" type="text/css" href="bootstrap-3.3.5-dist/css/bootstrap.css"/>
+	<!-- Bootstrap --> 
+	<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+-	<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+<!--	<link href="assets/styles.css" rel="stylesheet" media="screen">
+	-->
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	<style>
+		.modal .modal-dialog { width: 80%; }
+	</style>
+
+
 </head>
 <body>
 
@@ -16,7 +31,64 @@
             <h1>PHP CRUD Operations Using PDO Connection</h1>
         </div>
     </div>
-    <div class="row">
+
+
+
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="#">Member Home</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> 
+								<?php //echo $row['userEmail']; ?> <i class="caret"></i>
+								<?php echo 'email'; ?> <i class="caret"></i>
+                                
+								</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a tabindex="-1" href="logout.php">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="http://www.codingcage.com/">Coding Cage</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Tutorials <b class="caret"></b>
+
+                                </a>
+                                <ul class="dropdown-menu" id="menu1">
+                                    <li><a href="http://www.codingcage.com/search/label/PHP OOP">PHP OOP</a></li>
+                                    <li><a href="http://www.codingcage.com/search/label/PDO">PHP PDO</a></li>
+                                    <li><a href="http://www.codingcage.com/search/label/jQuery">jQuery</a></li>
+                                    <li><a href="http://www.codingcage.com/search/label/Bootstrap">Bootstrap</a></li>
+                                    <li><a href="http://www.codingcage.com/search/label/CRUD">CRUD</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="http://www.codingcage.com/2015/09/login-registration-email-verification-forgot-password-php.html">Tutorial Link</a>
+                            </li>
+                            
+                            
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+
+
+
+
+	<div class="row">
         <div class="col-md-12">
             <div class="pull-right">
                 <button class="btn btn-success" data-toggle="modal" data-target="#add_new_record_modal">Add New Record</button>
@@ -107,13 +179,13 @@
 <!-- // Modal -->
 
 <!-- Jquery JS file -->
-<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="assets/jquery-1.11.3.min.js"></script>
 
 <!-- Bootstrap JS file -->
 <script type="text/javascript" src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
 
 <!-- Custom JS file -->
-<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="assets/playerscript.js"></script>
 
 </body>
 </html>

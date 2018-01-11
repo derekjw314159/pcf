@@ -3,7 +3,7 @@ class Database
 {
      
     private $host = "localhost";
-    private $db_name = "../yii/pcf/protected/data/pcf.db";
+    private $db_name = "/yii/pcf/protected/data/pcf.db";
     private $username = "root";
     private $password = "";
     public $conn;
@@ -14,7 +14,7 @@ class Database
 	    $this->conn = null;    
         try
 		{
-            $this->conn = new PDO("sqlite:" . $this->db_name);
+            $this->conn = new PDO("sqlite:" . $_SERVER["DOCUMENT_ROOT"] . $this->db_name);
 			$this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);	
         }
 		catch(PDOException $exception)
