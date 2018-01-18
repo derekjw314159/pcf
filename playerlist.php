@@ -37,6 +37,10 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 		/*.modal .modal-dialog { width: 80%; }
 		/*.tr {background-color: "#FFFFFF"; } */
 		.navbar-inner { background-color: #04386b;} /* BB&O Blue */
+		.btn.btn-primary{ margin-top:0 !important;
+			vertical-align: top;
+			}
+		select[class*="span"] { margin-bottom: 0; } 
 	</style>
 
 </head>
@@ -50,7 +54,8 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 			 <span class="icon-bar"></span>
 			 <span class="icon-bar"></span>
 			</a>
-			<a class="brand" href="#">Member Home</a>
+			<a class="brand" href="#">Parental Consent</a>
+			
 			<div class="nav-collapse collapse">
 				<ul class="nav pull-right">
 					<li class="dropdown">
@@ -64,33 +69,37 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 						</ul>
 					</li>
 				</ul>
-				<ul class="nav">
-					<li class="active">
-						<a href="http://www.codingcage.com/">Coding Cage</a>
-					</li>
-					<li class="dropdown">
-						<a href="#" data-toggle="dropdown" class="dropdown-toggle">Tutorials <b class="caret"></b>
 
-						</a>
-						<ul class="dropdown-menu" id="menu1">
-							<li><a href="http://www.codingcage.com/search/label/PHP OOP">PHP OOP</a></li>
-							<li><a href="http://www.codingcage.com/search/label/PDO">PHP PDO</a></li>
-							<li><a href="http://www.codingcage.com/search/label/jQuery">jQuery</a></li>
-							<li><a href="http://www.codingcage.com/search/label/Bootstrap">Bootstrap</a></li>
-							<li><a href="http://www.codingcage.com/search/label/CRUD">CRUD</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="http://www.codingcage.com/2015/09/login-registration-email-verification-forgot-password-php.html">Tutorial Link</a>
-					</li>
-					
-					
-				</ul>
 			</div>
-			<!--/.nav-collapse -->
+
+
+
+
 		</div>
 	</div>
-</div>
+</div> <!-- End of Navbar -->
+
+
+		<div class="container">
+            <form>
+				<div class="form-group pull-left">
+                Filter: county
+                    <select class="form-control span1" id="county">
+                        <option>BBO</option>
+                        <option>Surrey</option>
+                    </select> gender
+                    <select class="form-control span1" id="gender">
+                        <option>boy</option>
+                        <option>boy</option>
+                    </select>
+                    <button type="button" class="btn btn-primary">Go!</button>
+                </div>
+            </form>
+        </div><!--/.nav-collapse -->
+
+
+
+
 
 <!-- Content Section -->
 <div class="container">
