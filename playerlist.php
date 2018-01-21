@@ -40,7 +40,10 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 		.btn.btn-primary{ margin-top:0 !important;
 			vertical-align: top;
 			}
-		select[class*="span"] { margin-bottom: 0; } 
+		select[class*="span"] { margin-bottom: 0; }
+		.big{ font-size: 1.2em;
+			font-weight: bold;
+			}
 	</style>
 
 </head>
@@ -54,7 +57,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 			 <span class="icon-bar"></span>
 			 <span class="icon-bar"></span>
 			</a>
-			<a class="brand" href="#">Parental Consent</a>
+			<a class="brand" href="#">Parental Consent System</a>
 			
 			<div class="nav-collapse collapse">
 				<ul class="nav pull-right">
@@ -71,40 +74,42 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 				</ul>
 
 			</div>
-
-
-
-
 		</div>
 	</div>
 </div> <!-- End of Navbar -->
-
-
-		<div class="container">
-            <form>
-				<div class="form-group pull-left">
-                Filter: county
-                    <select class="form-control span1" id="county">
-                        <option>BBO</option>
-                        <option>Surrey</option>
-                    </select> gender
-                    <select class="form-control span1" id="gender">
-                        <option>boy</option>
-                        <option>boy</option>
-                    </select>
-                    <button type="button" class="btn btn-primary">Go!</button>
-                </div>
-            </form>
-        </div><!--/.nav-collapse -->
-
-
-
-
 
 <!-- Content Section -->
 <div class="container">
 	<div class="row">
         <div class="col-md-12">
+            <form>
+				<div class="form-group pull-left">
+				<span class="big">Filter:</span>&nbsp;county
+                    <select class="form-control span1" id="county" name="county">
+                        <option>BBO</option>
+                        <option>Surrey</option>
+                    </select>
+					&nbsp; gender 
+                    <select class="form-control span1" id="gender" name="gender">
+                        <option>all</option>
+                        <option>boy</option>
+                        <option>girl</option>
+                    </select>
+					&nbsp; squad
+                    <select class="form-control span2" id="squad" name="squad">
+                        <option>all</option>
+                        <option>player</option>
+                        <option>U14</option>
+                    </select>
+					&nbsp; DoB
+                    <select multiple class="form-control" id="year" name="year[]" size="1">
+                        <option>2004</option>
+                        <option>2005</option>
+                        <option>2006</option>
+                    </select>
+                    <button type="button" class="btn btn-primary">Go!</button>
+				</div>
+            </form>
             <div class="pull-right">
                 <button class="btn btn-success" data-toggle="modal" data-target="#add_new_record_modal">Add New Record</button>
             </div>
