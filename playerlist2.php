@@ -81,8 +81,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 <!-- Content Section -->
 <div class="container">
 	<div class="row align-items-center">
-		<div class="col-md-10">
-			<form class="form-inline">
+			<form class="form-inline" style="width: 80%; display: inline">
 				<div class="form-group" style="display: inline">
 					<label for="county">County</label>
 					<select class="form-control span1" id="county" name="county">
@@ -97,7 +96,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
                         <option>boy</option>
                         <option>girl</option>
                     </select>
-				</div>
+				</div> 
 				<div class="form-group" style="display: inline">
 					<label for="squad">squad</label>
                     <select class="form-control" id="squad" name="squad">
@@ -105,18 +104,17 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
                         <option>player</option>
                         <option>U14</option>
                     </select>
-				</div>
+				</div> 
 				<div class="form-group" style="display: inline">
 					<label for="year">DoB</label>
-                    <select multiple class="form-control" size=3 id="year" name="year[]">
+                    <select multiple class="form-control span1" id="year" name="years[]">
                         <option>2004</option>
                         <option>2005</option>
                         <option>2006</option>
                     </select>
-				</div>
+				</div> 
 				<button type="button" class="btn btn-primary">Go!</button>
 			</form>
-		</div> <!-- Col -->
 
 		<div class="pull-right col-md-2" style="display: inline">
 			<button class="btn btn-success" data-toggle="modal" data-target="#add_new_record_modal">Add New Record</button>
