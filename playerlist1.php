@@ -80,17 +80,17 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 <!-- Content Section -->
 <div class="container">
+	<form class="form-horizontal">
 	<div class="row">
         <div class="col-md-12">
-            <form class="form-horizontal">
-				<div style="width: 25%; margin: 0px" display: inline>
-				<span class="big">Filter:</span>&nbsp;county
-                    <select class="form-control span1" id="county" name="county">
-                        <option>BBO</option>
-                        <option>Surrey</option>
-                    </select>
+				<div class="form-inline col-sm-6" style="display: inline">
+					<span class="big">Filter:</span>&nbsp;county
+					<select class="form-control span1" id="county" name="county">
+						<option>BBO</option>
+						<option>Surrey</option>
+					</select>
 				</div>
-				<div class="form-group" style="width: 25%; margin: 0px">
+				<div class="form-inline col-sm-3" style="display: inline">
 					&nbsp; gender 
                     <select class="form-control span1" id="gender" name="gender">
                         <option>all</option>
@@ -115,12 +115,12 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
                     </select>
                     <button type="button" class="btn btn-primary">Go!</button>
 				</div>
-            </form>
             <div class="pull-right">
                 <button class="btn btn-success" data-toggle="modal" data-target="#add_new_record_modal">Add New Record</button>
             </div>
         </div>
-    </div>
+	</div>
+    </form> <!-- End of Form-->
     <div class="row">
         <div class="col-md-12">
             <h3>Records:</h3>
