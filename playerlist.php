@@ -21,7 +21,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     <title>PHP CRUD Operations Using PDO Connection</title>
 
     <!-- Bootstrap CSS File  -->
-    <link rel="sEtylesheet" type="text/css" href="bootstrap-3.3.5-dist/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.5-dist/css/bootstrap.css"/>
 	<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
 	<!-- Bootstrap --> 
 	<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
@@ -41,9 +41,8 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 			vertical-align: top;
 			}
 		select[class*="span"] { margin-bottom: 0; }
-		.big{ font-size: 1.2em;
-			font-weight: bold;
-			}
+		/* Incompatibility between the two bootstraps */
+		.modal-content { width: 85%; }
 	</style>
 
 </head>
@@ -58,8 +57,8 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 			 <span class="icon-bar"></span>
 			</a>
 			<a class="brand" href="#">Parental Consent System</a>
-			
-			<div class="nav-collapse collapse">
+			<!-- Have to override display on next line -->	
+			<div class="nav-collapse collapse" style="display: block">
 				<ul class="nav pull-right">
 					<li class="dropdown">
 						<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> 
@@ -80,47 +79,46 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 <!-- Content Section -->
 <div class="container">
-	<div class="row">
-        <div class="col-md-12">
-            <form class="form-horizontal">
-				<div style="width: 25%; margin: 0px" display: inline>
-				<span class="big">Filter:</span>&nbsp;county
-                    <select class="form-control span1" id="county" name="county">
-                        <option>BBO</option>
-                        <option>Surrey</option>
-                    </select>
+	<div class="row align-items-center">
+			<form class="form-inline" style="width: 80%; display: inline" action="" method="GET">
+				<div class="form-group" style="display: inline">
+					<label for="county">County</label>
+					<select class="form-control span1" id="county" name="county">
+						<option>BBO</option>
+￼
+Email Address
+						<option>Surrey</option>
+					</select>
 				</div>
-				<div class="form-group" style="width: 25%; margin: 0px">
-					&nbsp; gender 
+				<div class="form-group" style="display: inline">
+					<label for="gender">gender</label>
                     <select class="form-control span1" id="gender" name="gender">
                         <option>all</option>
                         <option>boy</option>
                         <option>girl</option>
                     </select>
 				</div>
-				<div class="form-group">
-					&nbsp; squad
-                    <select class="form-control span2" id="squad">
+				<div class="form-group" style="display: inline">
+					<label for="age">age group</label>
+                    <select class="form-control span2" id="age" name="age">
                         <option>all</option>
-                        <option>player</option>
+                        <option>U12</option>
                         <option>U14</option>
                     </select>
 				</div>
-				<div class="form-group pull-left">
-					&nbsp; DoB
-                    <select multiple class="form-control" id="year" name="year[]" size="2">
-                        <option>2004</option>
-                        <option>2005</option>
-                        <option>2006</option>
-                    </select>
-                    <button type="button" class="btn btn-primary">Go!</button>
+				<div class="form-group" style="display: inline">
+					<label><input type="checkbox" name="squad"> squad only
+					</label>
 				</div>
-            </form>
-            <div class="pull-right">
-                <button class="btn btn-success" data-toggle="modal" data-target="#add_new_record_modal">Add New Record</button>
-            </div>
+				<button type="submit" class="btn btn-primary">Refesh</button>
+			</form>
+
+		<div class="pull-right col-md-2" style="display: inline">
+			<button class="btn btn-success" data-toggle="modal" data-target="#add_new_record_modal">Add New Record</button>
         </div>
-    </div>
+	</div>
+
+
     <div class="row">
         <div class="col-md-12">
             <h3>Records:</h3>
