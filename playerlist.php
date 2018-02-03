@@ -10,9 +10,33 @@ if(!$user_home->is_logged_in()) {
 $stmt = $user_home->runQuery("SELECT * FROM tbl_users WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['userSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+/* Function selectinline
+ * Function for inline bootstrap select statement
+ * 
+ * Usage:
+ *      inlineselect(name, values, options, selected="", spanwidth=2, tabindent=3)
+ */
+function inlineselect($name, $values, $options, $selected=NULL, $spanwidth=2, $tabindent=3){
+	$tb= "";
+	for($i=0; $i<$tabindent; $i++){
+		$tb = $tb . "\t";
+		}
+	echo $tb . '<div class="form-group" style="display: inline">' . PHP_EOL;
+	echo $tb . "\t" . '<label for="' . $name . '">County</label>' . PHP_EOL;
+	echo $tb . "\t\t" . '<select class="form-control span' . $spanwidth . '" id="' . $name . '" name="' . $name . '">' . PHP_EOL;
+	for($i=0; $i < count($options) ; $i++){
+		echo $tb . "\t\t\t" . '<option value="' . $values[$i] . '"';
+		if ($selected == $values[$i]){
+			echo " selected";
+			}
+		echo ">" . $options[$i] . "</option>" . PHP_EOL;
+		}
+	echo $tb . "\t\t</select>" . PHP_EOL;
+	echo $tb . "\t</div>" . PHP_EOL;
+	}
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,8 +58,6 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 	<!-- Need to reconcile some differences between the two bootstrap files -->
 	<style>
-		/*.modal .modal-dialog { width: 80%; }
-		/*.tr {background-color: "#FFFFFF"; } */
 		.navbar-inner { background-color: #04386b;} /* BB&O Blue */
 		.btn.btn-primary{ margin-top:0 !important;
 			vertical-align: top;
@@ -80,37 +102,40 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 <!-- Content Section -->
 <div class="container">
 	<div class="row align-items-center">
-			<form class="form-inline" style="width: 80%; display: inline" action="" method="GET">
-				<div class="form-group" style="display: inline">
-					<label for="county">County</label>
-					<select class="form-control span1" id="county" name="county">
-						<option>BBO</option>
-￼
-Email Address
-						<option>Surrey</option>
-					</select>
-				</div>
-				<div class="form-group" style="display: inline">
-					<label for="gender">gender</label>
-                    <select class="form-control span1" id="gender" name="gender">
-                        <option>all</option>
-                        <option>boy</option>
-                        <option>girl</option>
-                    </select>
-				</div>
-				<div class="form-group" style="display: inline">
-					<label for="age">age group</label>
-                    <select class="form-control span2" id="age" name="age">
-                        <option>all</option>
-                        <option>U12</option>
-                        <option>U14</option>
-                    </select>
-				</div>
-				<div class="form-group" style="display: inline">
-					<label><input type="checkbox" name="squad"> squad only
-					</label>
-				</div>
-				<button type="submit" class="btn btn-primary">Refesh</button>
+		<form class="form-inline" style="width: 80%; display: inline" action="" method="GET">
+<?php			
+			$values = array( "bbo", "sussex");
+			$options = array ( "BB&O" , "Sussex" );
+			inlineselect( "count" , $values, $options ,"sussex" , 1 ) ;
+?>
+			<div class="form-group" style="display: inline">
+				<label for="county">County</label>
+				<select class="form-control span1" id="county" name="county">
+					<option>BBO</option>
+					<option>Surrey</option>
+				</select>
+			</div>
+			<div class="form-group" style="display: inline">
+				<label for="gender">gender</label>
+				<select class="form-control span1" id="gender" name="gender">
+					<option>all</option>
+					<option>boy</option>
+					<option>girl</option>
+				</select>
+			</div>
+			<div class="form-group" style="display: inline">
+				<label for="age">age group</label>
+				<select class="form-control span2" id="age" name="age">
+					<option>all</option>
+					<option>U12</option>
+					<option>U14</option>
+				</select>
+			</div>
+			<div class="form-group" style="display: inline">
+				<label><input type="checkbox" name="squad"> squad only
+				</label>
+			</div>
+			<button type="submit" class="btn btn-primary">Refesh</button>
 			</form>
 
 		<div class="pull-right col-md-2" style="display: inline">
